@@ -7,26 +7,8 @@ export const metadata: Metadata = {
   description:
     'Carnama is an app for vehicle owners and workshops in Pakistan. Log work, verify it at a shop, and pass the vehicle on without losing the file.',
   icons: {
-    icon: [
-      {
-        url: '/images/carnama-favicon-light.png',
-        media: '(prefers-color-scheme: light)',
-      },
-      {
-        url: '/images/carnama-favicon-dark.png',
-        media: '(prefers-color-scheme: dark)',
-      },
-    ],
-    apple: [
-      {
-        url: '/images/carnama-favicon-light.png',
-        media: '(prefers-color-scheme: light)',
-      },
-      {
-        url: '/images/carnama-favicon-dark.png',
-        media: '(prefers-color-scheme: dark)',
-      },
-    ],
+    icon: '/images/carnama-favicon-light.png',
+    apple: '/images/carnama-favicon-light.png',
   },
 };
 
@@ -36,7 +18,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" style={{ colorScheme: 'light' }}>
       <body className="font-sans bg-background text-text antialiased">
         <Header />
         {children}

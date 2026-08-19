@@ -1,14 +1,15 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
   title: 'Terms & Conditions | Carnama',
   description:
-    'Terms and conditions for the Carnama mobile apps, web app, and website, operated by Osama Azmat Khan.',
+    'Terms and conditions for the Carnama mobile apps, web app, and website.',
 };
 
-const linkClass = 'text-primary underline hover:opacity-80';
-const h2Class = 'text-2xl font-semibold text-primary mb-3';
+const linkClass = 'legal-link';
+const h2Class = 'legal-h2';
 
 function SupportEmail() {
   return (
@@ -20,22 +21,23 @@ function SupportEmail() {
 
 export default function TermsAndConditionsPage() {
   return (
-    <div className="min-h-screen bg-gray-50">
-      <article className="container mx-auto px-6 py-16 max-w-3xl">
-        <h1 className="text-4xl font-bold text-primary mb-2">
+    <div className="min-h-screen">
+      <article className="site-wrap py-16">
+        <div className="max-w-3xl">
+        <h1 className="legal-h1 mb-2 text-4xl font-semibold tracking-tight">
           Terms &amp; Conditions — Carnama
         </h1>
-        <p className="text-gray-500 mb-10">Effective as of 20 August 2026</p>
+        <p className="legal-meta mb-10">Effective as of 20 August 2026</p>
 
-        <div className="space-y-8 text-gray-700 leading-relaxed">
+        <div className="legal-doc space-y-8 leading-relaxed">
           <section>
             <p className="mb-4">
               These terms apply to the Carnama mobile apps (Android package{' '}
-              <code className="text-sm bg-gray-100 px-1 rounded">
+              <code className="text-sm bg-surface-muted px-1 rounded">
                 com.carnama.app
               </code>
               , iOS bundle{' '}
-              <code className="text-sm bg-gray-100 px-1 rounded">
+              <code className="text-sm bg-surface-muted px-1 rounded">
                 com.carnama.app
               </code>
               ), the web app at{' '}
@@ -57,8 +59,7 @@ export default function TermsAndConditionsPage() {
                 https://carnama.app
               </a>
               , and related services (together, the “Application”). Carnama is
-              operated by Osama Azmat Khan (the “Service Provider”). Contact:{' '}
-              <SupportEmail />.
+              the “Service Provider”. Contact: <SupportEmail />.
             </p>
             <p>
               By creating an account or using the Application, you agree to
@@ -73,9 +74,9 @@ export default function TermsAndConditionsPage() {
           <section>
             <h2 className={h2Class}>The service</h2>
             <p className="mb-4">
-              Carnama is a digital vehicle passport for cars and bikes. You may
-              use it as a <strong>vehicle owner</strong> and/or as a{' '}
-              <strong>workshop</strong>. Owners keep vehicles, photos, service
+              Carnama is an app for cars and bikes in Pakistan. You may use it
+              as a <strong>vehicle owner</strong> and/or as a{' '}
+              <strong>workshop</strong>. Owners keep a garage, photos, service
               history, transfers, and invoices. Workshops look up plates, log or
               verify work, attach receipts, and issue invoices.
             </p>
@@ -318,9 +319,9 @@ export default function TermsAndConditionsPage() {
           <section>
             <h2 className={h2Class}>Governing law</h2>
             <p>
-              These Terms are governed by the laws of the jurisdiction in which
-              the Service Provider is established, excluding conflict-of-law
-              rules, except where mandatory consumer law says otherwise.
+              These Terms are governed by the laws of Pakistan, excluding
+              conflict-of-law rules, except where mandatory consumer law says
+              otherwise.
               Disputes may be brought in courts that have jurisdiction under
               applicable law. This does not stop you using a court that
               mandatory law makes available to you.
@@ -349,44 +350,16 @@ export default function TermsAndConditionsPage() {
           <section>
             <h2 className={h2Class}>Contact</h2>
             <p>
-              Osama Azmat Khan
+              Carnama
               <br />
               <SupportEmail />
             </p>
           </section>
         </div>
+        </div>
       </article>
 
-      <footer className="bg-gray-900 text-white py-12">
-        <div className="container mx-auto px-6">
-          <div className="text-center">
-            <p className="text-lg">© 2026 Carnama. All rights reserved.</p>
-            <p className="mt-4 text-gray-400">
-              <Link href="/" className="hover:text-white transition-colors">
-                carnama.app
-              </Link>
-              {' · '}
-              <Link
-                href="/privacy"
-                className="hover:text-white transition-colors"
-              >
-                Privacy Policy
-              </Link>
-              {' · '}
-              <Link
-                href="/privacy#delete-account"
-                className="hover:text-white transition-colors"
-              >
-                Delete Account
-              </Link>
-              {' · '}
-              <Link href="/terms" className="hover:text-white transition-colors">
-                Terms &amp; Conditions
-              </Link>
-            </p>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }

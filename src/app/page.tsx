@@ -1,5 +1,4 @@
-import Image from 'next/image';
-import Link from 'next/link';
+import Footer from '@/components/Footer';
 import {
   GarageSketch,
   RecordSketch,
@@ -46,173 +45,167 @@ const workshopBlocks = [
 
 const steps = [
   {
-    n: '1',
+    n: '01',
     title: 'Owner adds a vehicle',
     body: 'Car or bike from the catalog, with plate, mileage, and chassis.',
   },
   {
-    n: '2',
+    n: '02',
     title: 'Work is logged or verified',
     body: 'Owners log service. Workshops look up the plate, log their own work, and confirm jobs tagged to them.',
   },
   {
-    n: '3',
+    n: '03',
     title: 'History follows the vehicle',
     body: 'Service history stays with the vehicle when you transfer ownership.',
   },
 ];
 
+function FeatureGrid({
+  items,
+}: {
+  items: { title: string; body: string }[];
+}) {
+  return (
+    <div className="mt-10 grid gap-4 sm:grid-cols-2">
+      {items.map((block) => (
+        <div key={block.title} className="rounded-2xl border border-border-subtle bg-surface p-6">
+          <h3 className="text-[17px] font-semibold">{block.title}</h3>
+          <p className="mt-2 text-[15px] leading-relaxed text-text-secondary">
+            {block.body}
+          </p>
+        </div>
+      ))}
+    </div>
+  );
+}
+
 export default function Home() {
   return (
     <div className="page-fade">
-      <section className="mx-auto max-w-hero px-5 pb-16 pt-14">
-        <Image
-          src="/images/carnama-logo-light.png"
-          alt="Carnama"
-          width={220}
-          height={60}
-          className="logo-mark mb-8 h-12 w-auto"
-          priority
-        />
-        <h1 className="text-[32px] font-bold leading-tight tracking-tight sm:text-[40px]">
-          Keep the history with the vehicle.
-        </h1>
-        <p className="mt-4 max-w-copy text-[16px] leading-[1.5] text-text-secondary">
-          Carnama is an app for vehicle owners and workshops in Pakistan. Log
-          work, verify it at a shop, and pass the vehicle on without losing the
-          file.
-        </p>
-        <div className="mt-8 flex flex-col items-start gap-3">
-          <a href="mailto:support@carnama.app" className="btn-primary">
-            Get the app
-          </a>
-          <p className="text-[14px] text-text-muted">
-            Available on iOS and Android
-          </p>
-          <a
-            href="#workshops"
-            className="text-[15px] text-text-secondary underline-offset-4 hover:underline"
-          >
-            For workshops
-          </a>
+      <section className="overflow-hidden">
+        <div className="site-wrap grid items-center gap-16 py-20 lg:grid-cols-[1.05fr_0.95fr] lg:py-28">
+          <div>
+            <p className="section-label">Pakistan · cars and bikes</p>
+            <h1 className="mt-4 max-w-xl text-4xl font-semibold tracking-tight sm:text-5xl lg:text-[56px] lg:leading-[1.08]">
+              Keep the history with the vehicle.
+            </h1>
+            <p className="mt-6 max-w-lg text-[17px] leading-relaxed text-text-secondary">
+              Carnama is an app for vehicle owners and workshops in Pakistan.
+              Log work, verify it at a shop, and pass the vehicle on without
+              losing the file.
+            </p>
+            <div className="mt-8 flex flex-wrap items-center gap-3">
+              <a href="mailto:support@carnama.app" className="btn-primary">
+                Get the app
+              </a>
+              <a href="#workshops" className="btn-ghost">
+                For workshops
+              </a>
+            </div>
+            <p className="mt-4 text-[14px] text-text-muted">
+              Available on iOS and Android
+            </p>
+          </div>
+          <div className="lg:justify-self-end">
+            <GarageSketch />
+            <div className="mx-auto mt-4 max-w-[300px]">
+              <RecordSketch />
+            </div>
+          </div>
         </div>
       </section>
 
       <section
         id="owners"
-        className="scroll-mt-16 border-t border-border-subtle"
+        className="scroll-mt-16 border-t border-border-subtle bg-surface-muted"
       >
-        <div className="mx-auto max-w-copy px-5 py-16">
-          <p className="section-label">Owners</p>
-          <h2 className="mt-2 text-[22px] font-bold">
-            Cars and bikes in one garage
-          </h2>
-          <p className="mt-3 text-[16px] leading-[1.5] text-text-secondary">
-            Keep a garage, log service, and let workshops verify work. When you
-            sell, history stays with the vehicle.
-          </p>
-
-          <div className="mt-8">
-            <GarageSketch />
+        <div className="site-wrap py-20 lg:py-24">
+          <div className="max-w-2xl">
+            <p className="section-label">Owners</p>
+            <h2 className="mt-3 text-3xl font-semibold tracking-tight">
+              Cars and bikes in one garage
+            </h2>
+            <p className="mt-4 text-[17px] leading-relaxed text-text-secondary">
+              Keep a garage, log service, and let workshops verify work. When
+              you sell, history stays with the vehicle.
+            </p>
           </div>
-
-          <div className="mt-10 divide-y divide-border-subtle border-y border-border-subtle">
-            {ownerBlocks.map((block) => (
-              <div key={block.title} className="py-6">
-                <h3 className="text-[16px] font-semibold">{block.title}</h3>
-                <p className="mt-2 text-[15px] leading-[1.5] text-text-secondary">
-                  {block.body}
-                </p>
-              </div>
-            ))}
-          </div>
-
-          <div className="mt-8">
-            <RecordSketch />
-          </div>
+          <FeatureGrid items={ownerBlocks} />
         </div>
       </section>
 
       <section
         id="workshops"
-        className="scroll-mt-16 border-t border-border-subtle bg-surface-muted"
+        className="scroll-mt-16 border-t border-border-subtle"
       >
-        <div className="mx-auto max-w-copy px-5 py-16">
-          <p className="section-label">Workshops</p>
-          <h2 className="mt-2 text-[22px] font-bold">Look up a plate, log the visit</h2>
-          <p className="mt-3 text-[16px] leading-[1.5] text-text-secondary">
-            Search recent vehicles, log repair by plate, and verify work an
-            owner tagged to your shop.
-          </p>
-
-          <div className="mt-8">
-            <WorkshopSearchSketch />
+        <div className="site-wrap grid items-start gap-12 py-20 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20 lg:py-24">
+          <div className="lg:sticky lg:top-24">
+            <p className="section-label">Workshops</p>
+            <h2 className="mt-3 text-3xl font-semibold tracking-tight">
+              Look up a plate, log the visit
+            </h2>
+            <p className="mt-4 text-[17px] leading-relaxed text-text-secondary">
+              Search recent vehicles, log repair by plate, and verify work an
+              owner tagged to your shop.
+            </p>
+            <div className="mt-10 hidden lg:block">
+              <WorkshopSearchSketch />
+            </div>
           </div>
-
-          <div className="mt-10 divide-y divide-border-subtle border-y border-border-subtle">
-            {workshopBlocks.map((block) => (
-              <div key={block.title} className="py-6">
-                <h3 className="text-[16px] font-semibold">{block.title}</h3>
-                <p className="mt-2 text-[15px] leading-[1.5] text-text-secondary">
-                  {block.body}
-                </p>
-              </div>
-            ))}
+          <div>
+            <div className="mb-10 lg:hidden">
+              <WorkshopSearchSketch />
+            </div>
+            <FeatureGrid items={workshopBlocks} />
           </div>
         </div>
       </section>
 
       <section
         id="how"
-        className="scroll-mt-16 border-t border-border-subtle"
+        className="scroll-mt-16 border-t border-border-subtle bg-surface-muted"
       >
-        <div className="mx-auto max-w-copy px-5 py-16">
-          <p className="section-label">How it fits together</p>
-          <h2 className="mt-2 text-[22px] font-bold">Three steps</h2>
-          <ol className="mt-8 space-y-8">
+        <div className="site-wrap py-20 lg:py-24">
+          <div className="max-w-2xl">
+            <p className="section-label">How it fits together</p>
+            <h2 className="mt-3 text-3xl font-semibold tracking-tight">
+              Three steps
+            </h2>
+          </div>
+          <ol className="mt-12 grid gap-8 md:grid-cols-3">
             {steps.map((step) => (
-              <li key={step.n} className="flex gap-4">
-                <span className="mt-0.5 w-6 shrink-0 text-[13px] font-semibold text-text-muted">
+              <li key={step.n}>
+                <p className="text-[13px] font-semibold tracking-wide text-text-muted">
                   {step.n}
-                </span>
-                <div>
-                  <h3 className="text-[16px] font-semibold">{step.title}</h3>
-                  <p className="mt-2 text-[15px] leading-[1.5] text-text-secondary">
-                    {step.body}
-                  </p>
-                </div>
+                </p>
+                <h3 className="mt-3 text-[18px] font-semibold">{step.title}</h3>
+                <p className="mt-2 text-[15px] leading-relaxed text-text-secondary">
+                  {step.body}
+                </p>
               </li>
             ))}
           </ol>
         </div>
       </section>
 
-      <footer className="border-t border-border-subtle">
-        <div className="mx-auto max-w-copy px-5 py-10 text-[14px] text-text-muted">
-          <p className="wordmark font-semibold text-text">Carnama</p>
-          <p className="mt-3">
-            Questions:{' '}
-            <a
-              href="mailto:support@carnama.app"
-              className="text-text-secondary underline-offset-2 hover:underline"
-            >
-              support@carnama.app
-            </a>
-          </p>
-          <p className="mt-4 flex flex-wrap gap-x-3 gap-y-1">
-            <Link href="/privacy" className="hover:text-text">
-              Privacy
-            </Link>
-            <Link href="/terms" className="hover:text-text">
-              Terms
-            </Link>
-            <Link href="/privacy#delete-account" className="hover:text-text">
-              Delete account
-            </Link>
-          </p>
-          <p className="mt-6">© 2026 Carnama</p>
+      <section className="border-t border-border-subtle">
+        <div className="site-wrap flex flex-col items-start justify-between gap-8 py-16 sm:flex-row sm:items-center">
+          <div>
+            <h2 className="text-2xl font-semibold tracking-tight">
+              Get Carnama
+            </h2>
+            <p className="mt-2 text-[15px] text-text-secondary">
+              Available on iOS and Android. For owners and workshops.
+            </p>
+          </div>
+          <a href="mailto:support@carnama.app" className="btn-primary">
+            Get the app
+          </a>
         </div>
-      </footer>
+      </section>
+
+      <Footer />
     </div>
   );
 }

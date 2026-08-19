@@ -34,7 +34,7 @@ module.exports = {
       },
       maxWidth: {
         copy: '680px',
-        hero: '720px',
+        site: '1120px',
       },
       borderRadius: {
         card: '8px',
