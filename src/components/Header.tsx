@@ -3,39 +3,30 @@ import Image from 'next/image';
 
 export default function Header() {
   return (
-    <header className="fixed w-full bg-gradient-to-r from-primary to-secondary z-50">
-      <div className="container mx-auto px-6">
-        <div className="flex items-center justify-between h-20">
-          <Link href="/" className="flex items-center">
-            <Image
-              src="/images/carnama-logo-light.png"
-              alt="Carnama Logo"
-              width={120}
-              height={40}
-              className="h-10 w-auto"
-            />
+    <header className="sticky top-0 z-50 border-b border-border-subtle bg-background">
+      <div className="mx-auto flex h-14 max-w-hero items-center justify-between px-5">
+        <Link href="/" className="flex items-center" aria-label="Carnama home">
+          <Image
+            src="/images/carnama-logo-light.png"
+            alt="Carnama"
+            width={132}
+            height={36}
+            className="logo-mark h-8 w-auto"
+            priority
+          />
+        </Link>
+        <nav className="flex items-center gap-5 text-[15px] text-text-secondary">
+          <Link href="/#owners" className="hover:opacity-70">
+            Owners
           </Link>
-          <nav className="hidden md:flex items-center space-x-8">
-            <Link href="/" className="text-white hover:text-accent transition-colors">
-              Home
-            </Link>
-            <Link href="/about" className="text-white hover:text-accent transition-colors">
-              About
-            </Link>
-            <Link href="/contact" className="text-white hover:text-accent transition-colors">
-              Contact Us
-            </Link>
-            <Link href="/downloads" className="text-white hover:text-accent transition-colors">
-              Downloads
-            </Link>
-          </nav>
-          <button className="md:hidden text-white">
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-          </button>
-        </div>
+          <Link href="/#workshops" className="hover:opacity-70">
+            Workshops
+          </Link>
+          <a href="mailto:support@carnama.app" className="hover:opacity-70">
+            Support
+          </a>
+        </nav>
       </div>
     </header>
   );
-} 
+}
