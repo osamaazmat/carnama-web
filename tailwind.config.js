@@ -8,11 +8,39 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: '#1a1a1a',
-        secondary: '#2d2d2d',
-        accent: '#ffffff',
+        background: 'var(--background)',
+        surface: 'var(--surface)',
+        'surface-muted': 'var(--surface-muted)',
+        text: 'var(--text)',
+        'text-secondary': 'var(--text-secondary)',
+        'text-muted': 'var(--text-muted)',
+        border: 'var(--border)',
+        'border-subtle': 'var(--border-subtle)',
+        primary: 'var(--text)',
+        danger: 'var(--danger)',
+        success: 'var(--success)',
+        'success-muted': 'var(--success-muted)',
+        warning: 'var(--warning)',
+      },
+      fontFamily: {
+        sans: [
+          'system-ui',
+          '-apple-system',
+          'BlinkMacSystemFont',
+          'SF Pro Text',
+          'Segoe UI',
+          'sans-serif',
+        ],
+      },
+      maxWidth: {
+        copy: '680px',
+        hero: '720px',
+      },
+      borderRadius: {
+        card: '8px',
+        pill: '6px',
       },
     },
   },
   plugins: [],
-} 
+};

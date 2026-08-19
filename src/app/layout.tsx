@@ -1,13 +1,11 @@
-import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
-import './globals.css'
-import Header from '@/components/Header'
-
-const inter = Inter({ subsets: ['latin'] })
+import type { Metadata } from 'next';
+import './globals.css';
+import Header from '@/components/Header';
 
 export const metadata: Metadata = {
-  title: 'Carnama - Car Management App',
-  description: 'Your all-in-one solution for efficient vehicle management',
+  title: 'Carnama',
+  description:
+    'Carnama is an app for vehicle owners and workshops in Pakistan. Log work, verify it at a shop, and pass the vehicle on without losing the file.',
   icons: {
     icon: [
       {
@@ -30,21 +28,19 @@ export const metadata: Metadata = {
       },
     ],
   },
-}
+};
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className="font-sans bg-background text-text antialiased">
         <Header />
-        <main className="pt-20">
-          {children}
-        </main>
+        {children}
       </body>
     </html>
-  )
-} 
+  );
+}
