@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
   title: 'Privacy Policy | Carnama',
@@ -7,9 +8,9 @@ export const metadata: Metadata = {
     'How Carnama collects, uses, shares, and stores information, and how to delete your Carnama account.',
 };
 
-const linkClass = 'text-primary underline hover:opacity-80';
-const h2Class = 'text-2xl font-semibold text-primary mb-3';
-const h3Class = 'text-xl font-semibold text-primary mb-3';
+const linkClass = 'legal-link';
+const h2Class = 'legal-h2';
+const h3Class = 'legal-h3';
 
 function SupportEmail() {
   return (
@@ -21,27 +22,28 @@ function SupportEmail() {
 
 export default function PrivacyPolicyPage() {
   return (
-    <div className="min-h-screen bg-gray-50">
-      <article className="container mx-auto px-6 py-16 max-w-3xl">
-        <h1 className="text-4xl font-bold text-primary mb-2">
+    <div className="min-h-screen">
+      <article className="site-wrap py-16">
+        <div className="max-w-3xl">
+        <h1 className="legal-h1 mb-2 text-4xl font-semibold tracking-tight">
           Privacy Policy — Carnama
         </h1>
-        <p className="text-gray-500 mb-10">Last updated: 20 August 2026</p>
+        <p className="legal-meta mb-10">Last updated: 20 August 2026</p>
 
-        <div className="space-y-8 text-gray-700 leading-relaxed">
+        <div className="legal-doc space-y-8 leading-relaxed">
           <section>
             <p className="mb-4">
-              Carnama (“we”, “us”, “Service Provider”) is operated by Osama
-              Azmat Khan. Contact: <SupportEmail />.
+              Carnama (“we”, “us”, the “Service Provider”) operates this
+              service. Contact: <SupportEmail />.
             </p>
             <p className="mb-4">
               This policy describes how we collect, use, share, and store
               information when you use Carnama: the Android app (package{' '}
-              <code className="text-sm bg-gray-100 px-1 rounded">
+              <code className="text-sm bg-surface-muted px-1 rounded">
                 com.carnama.app
               </code>
               ), the iOS app (bundle{' '}
-              <code className="text-sm bg-gray-100 px-1 rounded">
+              <code className="text-sm bg-surface-muted px-1 rounded">
                 com.carnama.app
               </code>
               ), the web app at{' '}
@@ -73,10 +75,11 @@ export default function PrivacyPolicyPage() {
           <section>
             <h2 className={h2Class}>Who the app is for</h2>
             <p>
-              Carnama is a digital vehicle passport for vehicle owners and
-              workshops (cars and bikes). It is not directed at children under
-              18. Accounts require an email and password. You must verify your
-              email before you can use the app.
+              Carnama is an app for vehicle owners and workshops in Pakistan
+              (cars and bikes). Keep a garage, log service, and let workshops
+              verify work. It is not directed at children under 18. Accounts
+              require an email and password. You must verify your email before
+              you can use the app.
             </p>
           </section>
 
@@ -455,44 +458,16 @@ export default function PrivacyPolicyPage() {
           <section>
             <h2 className={h2Class}>Contact</h2>
             <p>
-              Osama Azmat Khan
+              Carnama
               <br />
               <SupportEmail />
             </p>
           </section>
         </div>
+        </div>
       </article>
 
-      <footer className="bg-gray-900 text-white py-12">
-        <div className="container mx-auto px-6">
-          <div className="text-center">
-            <p className="text-lg">© 2026 Carnama. All rights reserved.</p>
-            <p className="mt-4 text-gray-400">
-              <Link href="/" className="hover:text-white transition-colors">
-                carnama.app
-              </Link>
-              {' · '}
-              <Link
-                href="/privacy"
-                className="hover:text-white transition-colors"
-              >
-                Privacy Policy
-              </Link>
-              {' · '}
-              <Link
-                href="/privacy#delete-account"
-                className="hover:text-white transition-colors"
-              >
-                Delete Account
-              </Link>
-              {' · '}
-              <Link href="/terms" className="hover:text-white transition-colors">
-                Terms &amp; Conditions
-              </Link>
-            </p>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }
