@@ -204,3 +204,11 @@ a {
 .legal-meta {
   color: var(--text-muted);
 }
+
+.legal-embed {
+  box-sizing: border-box;
+  padding-top: max(24px, env(safe-area-inset-top));
+  padding-bottom: max(40px, env(safe-area-inset-bottom));
+  padding-left: max(20px, env(safe-area-inset-left));
+  padding-right: max(20px, env(safe-area-inset-right));
+}

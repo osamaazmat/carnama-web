@@ -1,12 +1,4 @@
-import type { Metadata } from 'next';
 import Link from 'next/link';
-import Footer from '@/components/Footer';
-
-export const metadata: Metadata = {
-  title: 'Privacy Policy | Carnama',
-  description:
-    'How Carnama collects, uses, shares, and stores information, and how to delete your Carnama account.',
-};
 
 const linkClass = 'legal-link';
 const h2Class = 'legal-h2';
@@ -20,11 +12,32 @@ function SupportEmail() {
   );
 }
 
-export default function PrivacyPolicyPage() {
+function SiteUrl({ href, embedded }: { href: string; embedded?: boolean }) {
+  if (embedded) {
+    return <span>{href.replace(/^https:\/\//, '')}</span>;
+  }
   return (
-    <div className="min-h-screen">
-      <article className="site-wrap py-16">
-        <div className="max-w-3xl">
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={linkClass}
+    >
+      {href}
+    </a>
+  );
+}
+
+export default function PrivacyPolicyContent({
+  embedded = false,
+}: {
+  embedded?: boolean;
+}) {
+  const deleteHref = embedded ? '#delete-account' : '/privacy#delete-account';
+
+  return (
+    <article>
+      <div className="max-w-3xl">
         <h1 className="legal-h1 mb-2 text-4xl font-semibold tracking-tight">
           Privacy Policy — Carnama
         </h1>
@@ -46,24 +59,8 @@ export default function PrivacyPolicyPage() {
               <code className="text-sm bg-surface-muted px-1 rounded">
                 com.carnama.app
               </code>
-              ), the web app at{' '}
-              <a
-                href="https://app.carnama.app"
-                target="_blank"
-                rel="noopener noreferrer"
-                className={linkClass}
-              >
-                https://app.carnama.app
-              </a>
-              , the website at{' '}
-              <a
-                href="https://carnama.app"
-                target="_blank"
-                rel="noopener noreferrer"
-                className={linkClass}
-              >
-                https://carnama.app
-              </a>
+              ), the web app at <SiteUrl href="https://app.carnama.app" embedded={embedded} />
+              , the website at <SiteUrl href="https://carnama.app" embedded={embedded} />
               , and related APIs.
             </p>
             <p>
@@ -382,7 +379,7 @@ export default function PrivacyPolicyPage() {
                 You may request access to, correction of, or deletion of your
                 personal data, or withdraw consent where processing is based on
                 consent, by using{' '}
-                <Link href="/privacy#delete-account" className={linkClass}>
+                <Link href={deleteHref} className={linkClass}>
                   in-app deletion
                 </Link>{' '}
                 or emailing <SupportEmail />.
@@ -465,9 +462,6 @@ export default function PrivacyPolicyPage() {
           </section>
         </div>
         </div>
-      </article>
-
-      <Footer />
-    </div>
+    </article>
   );
 }

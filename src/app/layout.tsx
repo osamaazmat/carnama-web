@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
 import './globals.css';
-import Header from '@/components/Header';
 
 export const metadata: Metadata = {
   title: 'Carnama',
@@ -20,7 +19,6 @@ export default function RootLayout({
   return (
     <html lang="en" style={{ colorScheme: 'light' }}>
       <body className="font-sans bg-background text-text antialiased">
-        <Header />
         {children}
       </body>
     </html>
